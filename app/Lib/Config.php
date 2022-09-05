@@ -6,7 +6,7 @@ class Config
 {
   private static $config;
 
-  public static function get(string $key)
+  public static function get(string $key): ?string
   {
     if (is_null(self::$config)) {
       self::$config = require_once(__DIR__ . '/../../config.php');
