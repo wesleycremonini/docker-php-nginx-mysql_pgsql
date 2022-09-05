@@ -2,8 +2,5 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Lib\Config;
-
-// path to log file
-$LOG_PATH = Config::get('LOG_PATH');
-var_dump($LOG_PATH) && die();
+App\Lib\ErrorHandler::run();
+App\Lib\Logger::run();
