@@ -2,6 +2,8 @@
 
 namespace App\Lib;
 
+use Exception;
+
 class Config
 {
   private static $config;
@@ -9,9 +11,18 @@ class Config
   public static function get(string $key): ?string
   {
     if (is_null(self::$config)) {
-      self::$config = require_once(__DIR__ . '/../../config.php');
+      self::$config = require_once(__DIR__ . '/../../config/config.php');
     }
-    
-    return !empty(self::$config[$key]) ? self::$config[$key] : null;
+
+    self::CheckIfKeyExists($key);
+
+    return self::$config[$key];
+  }
+
+  private static function CheckIfKeyExists(string $key): void
+  {
+    if (!isset(self::$config[$key])) {
+      throw new Exception('Config key does not exists.');
+    }
   }
 }
