@@ -17,17 +17,34 @@ services:
     depends_on:
       - db
 
+  # db:
+  #   container_name: db
+  #   image: mysql
+  #   tty: true
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: pass
+  #     MYSQL_DATABASE: db
+  #     MYSQL_PASSWORD: pass
+  #   ports:                                                                                                              
+  #     - 3306:3306
+  #   volumes:
+  #     - dbdata:/var/lib/mysql
+
   db:
     container_name: db
-    image: mysql
+    image: postgres
     tty: true
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: db
-      MYSQL_PASSWORD: pass
-    ports:                                                                                                              
-      - 3306:3306
+      POSTGRES_DB: db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: pass
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+       - dbdata:/var/lib/postgresql/data
 
   webserver:
     image: nginx:alpine
@@ -46,4 +63,8 @@ services:
 networks:
   default:
     driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
   
