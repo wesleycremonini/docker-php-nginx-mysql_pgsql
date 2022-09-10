@@ -14,9 +14,12 @@ Capsule::schema()->create('users', function ($table) {
 });
 
 //create_cars_table
-Capsule::schema()->create('cars', function ($table) {
+Capsule::schema()->create('cpfs', function ($table) {
   $table->increments('id');
-  $table->string('plate', 10);
+  $table->string('number', 11);
   $table->bigInteger('user_id');
   $table->timestamps();
 });
+
+
+echo 'OK';
