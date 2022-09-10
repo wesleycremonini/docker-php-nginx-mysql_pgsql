@@ -13,7 +13,7 @@ class DB
         $capsule = new Capsule;
         
         $capsule->addConnection([
-            'driver'    => 'mysql',
+            'driver'    => 'pgsql',
             'host'      => 'db',
             'database'  => 'db',
             'username'  => 'root',
