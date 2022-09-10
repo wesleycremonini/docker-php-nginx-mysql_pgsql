@@ -4,10 +4,12 @@ Initial setup for no-framework php development with MVC architecture and Service
 
 ###### Composer packages:
 
+```bash
 filp/whoops -> Error handler
 monolog/monolog -> Logger
 illuminate/database -> ORM
 bramus/router -> Routing
+```
 
 ###### How to use:
 
