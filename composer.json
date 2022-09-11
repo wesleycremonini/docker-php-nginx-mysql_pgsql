@@ -10,6 +10,7 @@
         "monolog/monolog": "^3.2",
         "illuminate/database": "^9.28",
         "illuminate/events": "^9.28",
-        "bramus/router": "^1.6"
+        "slim/slim": "^4.10",
+        "slim/psr7": "^1.5"
     }
 }
