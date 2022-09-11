@@ -2,23 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
 use App\Traits\JsonResponseTrait;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 
 class UserController
 {
   use JsonResponseTrait;
 
-  public function index()
+  private $service;
+
+  public function __construct()
   {
-    return $this->success([
-      'test' => 'test'
-    ], 200);
+    $this->service = new UserService();
   }
 
-  public function store()
+  public function index(Request $request, Response $response): Response
   {
+    $serviceResponse = $this->service->index();
+
     return $this->success([
-      'test' => $_POST['test']
-    ], 201);
+      $serviceResponse
+    ], 200, $response);
+  }
+
+  public function store(Request $request, Response $response): Response
+  {
+    $serviceResponse = $this->service->store($request->getParsedBody());
+
+    return $this->success([
+      $serviceResponse
+    ], 201, $response);
+  }
+
+  public function show(Request $request, Response $response, array $params): Response
+  {
+    $serviceResponse = $this->service->show($params['id']);
+
+    return $this->success([
+      $serviceResponse
+    ], 200, $response);
   }
 }
