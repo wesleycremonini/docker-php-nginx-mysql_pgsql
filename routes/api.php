@@ -2,28 +2,22 @@
 
 use App\Http\Controllers\UserController;
 use Slim\Factory\AppFactory;
+use Slim\Routing\RouteCollectorProxy;
 
 $router = AppFactory::create();
+$router->addBodyParsingMiddleware();
 
-$router->get('/a', [UserController::class, 'index']);
-$router->get('/a/{id}', [UserController::class, 'show']);
-$router->post('/a/{id}', [UserController::class, 'store']);
+//api
+$router->group('/api', function (RouteCollectorProxy $group) {
+  
+  // users
+  $group->group('/users', function (RouteCollectorProxy $group) {
+    $group->get('', [UserController::class, 'index']);
+    $group->post('', [UserController::class, 'store']);
+    $group->put('/{id}', [UserController::class, 'update']);
+    $group->get('/{id}', [UserController::class, 'show']);
+    $group->delete('/{id}', [UserController::class, 'destroy']);
+  });
+});
 
 $router->run();
-
-
-
-// $router = new Router();
-
-// //api
-// $router->mount('/api', function () use ($router) {
-
-//   //users
-//   $router->mount('/users', function () use ($router) {
-//     $router->get('/', [new UserController, 'index']);
-//     $router->post('/', [new UserController, 'store']);
-//   });
-
-// });
-
-// $router->run();
