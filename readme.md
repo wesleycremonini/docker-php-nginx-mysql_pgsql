@@ -8,7 +8,7 @@ Initial setup for no-framework php development with MVC architecture and Service
 filp/whoops -> Error handler
 monolog/monolog -> Logger
 illuminate/database -> ORM
-bramus/router -> Routing
+slim/slim -> Routing
 ```
 
 ###### How to use:
