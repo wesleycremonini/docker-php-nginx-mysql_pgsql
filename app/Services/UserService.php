@@ -20,7 +20,7 @@ class UserService
     return $repositoryResponse;
   }
 
-  public function store($reqBody)
+  public function store(array $reqBody)
   {
     $user = [
       'name' => $reqBody['name']
@@ -34,5 +34,20 @@ class UserService
   {
     $repositoryResponse = $this->repository->getOne($id);
     return $repositoryResponse;
+  }
+
+  public function update(array $reqBody ,int $id)
+  {
+    $updatedUser = [
+      'name' => $reqBody['name']
+    ];
+
+    $repositoryResponse = $this->repository->update($updatedUser, $id);
+    return $repositoryResponse;
+  }
+
+  public function destroy(int $id)
+  {
+    $this->repository->delete($id);
   }
 }

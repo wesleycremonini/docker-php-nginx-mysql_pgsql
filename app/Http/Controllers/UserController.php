@@ -44,4 +44,19 @@ class UserController
       $serviceResponse
     ], 200, $response);
   }
+
+  public function update(Request $request, Response $response, array $params): Response
+  {
+    $serviceResponse = $this->service->update($request->getParsedBody(), $params['id']);
+
+    return $this->success([
+      $serviceResponse
+    ], 200, $response);
+  }
+
+  public function destroy(Request $request, Response $response, array $params): Response
+  {
+    $this->service->destroy($params['id']);
+    return $this->success([], 204, $response);
+  }
 }
