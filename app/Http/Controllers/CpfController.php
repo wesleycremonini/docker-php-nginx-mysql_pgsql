@@ -23,7 +23,7 @@ class CpfController
     $serviceResponse = $this->service->store($request->getParsedBody());
 
     return $this->success([
-      $serviceResponse
+      'cpf' => $serviceResponse
     ], 201, $response);
   }
 
@@ -32,7 +32,7 @@ class CpfController
     $serviceResponse = $this->service->show($params['id']);
 
     return $this->success([
-      $serviceResponse
+      'cpf' => $serviceResponse
     ], 200, $response);
   }
 
@@ -41,7 +41,7 @@ class CpfController
     $serviceResponse = $this->service->update($request->getParsedBody(), $params['id']);
 
     return $this->success([
-      $serviceResponse
+      'cpf' => $serviceResponse
     ], 200, $response);
   }
 }

@@ -23,7 +23,7 @@ class UserController
     $serviceResponse = $this->service->index();
 
     return $this->success([
-      $serviceResponse
+      'users' => $serviceResponse
     ], 200, $response);
   }
 
@@ -32,7 +32,7 @@ class UserController
     $serviceResponse = $this->service->store($request->getParsedBody());
 
     return $this->success([
-      $serviceResponse
+      'user' => $serviceResponse
     ], 201, $response);
   }
 
@@ -41,7 +41,7 @@ class UserController
     $serviceResponse = $this->service->show($params['id']);
 
     return $this->success([
-      $serviceResponse
+      'user' => $serviceResponse
     ], 200, $response);
   }
 
@@ -50,7 +50,7 @@ class UserController
     $serviceResponse = $this->service->update($request->getParsedBody(), $params['id']);
 
     return $this->success([
-      $serviceResponse
+      'user' => $serviceResponse
     ], 200, $response);
   }
 
