@@ -15,11 +15,11 @@ Capsule::schema()->create('users', function ($table) {
 
 //create_cars_table
 Capsule::schema()->create('cpfs', function ($table) {
+  $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
   $table->increments('id');
   $table->string('number', 11);
-  $table->bigInteger('user_id');
   $table->timestamps();
 });
 
 
-echo 'OK';
+echo "OK\n";
