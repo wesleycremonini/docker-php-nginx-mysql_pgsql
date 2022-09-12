@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CpfController;
 use App\Http\Controllers\UserController;
 use Slim\Factory\AppFactory;
 use Slim\Routing\RouteCollectorProxy;
@@ -17,6 +18,11 @@ $router->group('/api', function (RouteCollectorProxy $group) {
     $group->put('/{id}', [UserController::class, 'update']);
     $group->get('/{id}', [UserController::class, 'show']);
     $group->delete('/{id}', [UserController::class, 'destroy']);
+
+    // cpf
+    $group->get('/{id}/cpf', [CpfController::class, 'show']);
+    $group->post('/{id}/cpf', [CpfController::class, 'store']);
+    $group->patch('/{id}/cpf', [CpfController::class, 'update']);
   });
 });
 
