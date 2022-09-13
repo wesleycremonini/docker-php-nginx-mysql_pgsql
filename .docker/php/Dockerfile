@@ -8,5 +8,5 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql mbstring
 # pdo_mysql
